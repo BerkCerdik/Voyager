@@ -10,8 +10,8 @@ using Voyager.Models.Orm.Context;
 namespace Voyager.Migrations
 {
     [DbContext(typeof(VoyagerContext))]
-    [Migration("20201202074753_createDb")]
-    partial class createDb
+    [Migration("20201202101242_Voyeger")]
+    partial class Voyeger
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

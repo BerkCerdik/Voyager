@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Voyager.Migrations
 {
-    public partial class createDb : Migration
+    public partial class Voyeger : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
