@@ -3,6 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 @model List<Voyager.Models.Vm.DriverVM>
 
 <div class="col-md-12">
@@ -19,14 +20,21 @@
                         Name
                     </th>
                     <th>
-                        Country
+                        Surname
                     </th>
                     <th>
-                        City
+                        Password
                     </th>
-                    <th class="text-right">
-                        Salary
+                    <th>
+                        Email
                     </th>
+                    <th>
+                        View
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+
                     </thead>
                     <tbody>
                         @foreach (var item in Model)

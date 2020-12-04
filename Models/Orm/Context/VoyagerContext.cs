@@ -30,6 +30,7 @@ namespace Voyager.Models.Orm.Context
                         case EntityState.Added:
                             entity.CreatedDate = now;
                             entity.UpdatedDate = now;
+                            entity.IsDeleted = false;
                             break;
 
                         case EntityState.Modified:
