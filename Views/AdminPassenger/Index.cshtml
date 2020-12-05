@@ -33,20 +33,27 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @item.Name
-                                        </td>
-                                        <td>
-                                            @item.Surname
-                                        </td>
-                                        <td>
-                                            @item.Password
-                                        </td>
-                                        <td class="text-right">
-                                            @item.Email
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @item.Surname
+                                    </td>
+                                    <td>
+                                        @item.Password
+                                    </td>
+                                    <td class="text-right">
+                                        @item.Email
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-block" onclick="./AdminUpdate">
+                                            <a href="./AdminUpdate">Update</a>
+                                            //onclick emin değilim
+                                        </button>
+                                    </td>
+
+                                </tr>
                                 }
                             </tbody>
                         </table>
