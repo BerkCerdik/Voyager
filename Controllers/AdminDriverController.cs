@@ -56,6 +56,12 @@ namespace Voyager.Controllers
            return RedirectToAction("Index","AdminDriver");
         }
 
+        public IActionResult DriverDetail(int id)
+        {
+            Driver driver= _context.Drivers.FirstOrDefault(x => x.ID == id);
+
+            return Json(driver);
+        }
 
 
     }

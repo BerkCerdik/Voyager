@@ -26,8 +26,14 @@
                             <th>
                                 City
                             </th>
-                            <th class="text-right">
-                                Salary
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                View
+                            </th>
+                            <th>
+                                Edit
                             </th>
                             </thead>
                             <tbody>
@@ -43,16 +49,20 @@
                                     <td>
                                         @item.Password
                                     </td>
-                                    <td class="text-right">
+                                    <td>
                                         @item.Email
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary btn-block" onclick="./AdminUpdate">
-                                            <a href="./AdminUpdate">Update</a>
-                                            //onclick emin değilim
+                                        <button class="btn btn-primary btn-block">
+                                            <a href="/AdminPassenger/Detail/@item.ID">Detail</a>
                                         </button>
                                     </td>
-
+                                    <td>
+                                        <button class="btn btn-warning btn-block">
+                                            <a href="/AdminPassenger/Edit/@item.ID">Edit</a>
+                                        </button>
+                                    </td>
+                                    @*delete*@
                                 </tr>
                                 }
                             </tbody>

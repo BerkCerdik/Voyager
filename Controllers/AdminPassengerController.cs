@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Voyager.Models.Orm.Context;
+using Voyager.Models.Orm.Entities;
 using Voyager.Models.Vm;
 
 namespace Voyager.Controllers
@@ -21,7 +22,7 @@ namespace Voyager.Controllers
         {
             List<PassengerVM> passengers = _context.Passengers.Select(q => new PassengerVM()
             {
-
+                ID= q.ID,
                 Email = q.Email,
                 Name = q.Name,
                 Password = q.Password,
@@ -30,6 +31,13 @@ namespace Voyager.Controllers
             }).ToList();
 
             return View(passengers);
+        }
+
+        public IActionResult PassengerDetail(int id)
+        {
+            Passenger passenger= _context.Passengers.FirstOrDefault(x => x.ID == id);
+
+            return Json(passenger);
         }
     }
 }
