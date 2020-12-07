@@ -4,5 +4,78 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
 
+@using Voyager.Models.Vm
+@model List<TripVM>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Passengers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Passenger Full Name
+                            </th>
+                            <th>
+                                Driver Full Name
+                            </th>
+                            <th>
+                                Departure Point
+                            </th>
+                            <th>
+                                Arrival Point
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Detail
+                            </th>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.ID
+                                        </td>
+                                        <td>
+                                            @item.PassengerName+" "+@item.PassengerLastname
+                                        </td>
+                                        <td>
+                                            @item.DriverName+" "+@item.DriverLastname
+                                        </td>
+                                        <td>
+                                            @item.DeparturePoint
+                                        </td>
+                                        <td>
+                                            @item.ArrivalPoint
+                                        </td>
+                                        <td>
+                                            @item.Price
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-outline-default btn-block">
+                                                <a href="/@item.ID">Detail</a>
+                                            </button>
+                                        </td>
+                                        @*delete*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
