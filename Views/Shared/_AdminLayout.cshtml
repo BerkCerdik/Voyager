@@ -40,37 +40,37 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active ">
-                        <a href="./Home">
+                        <a href="~/Home">
                             <i class="nc-icon nc-bank"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./AdminTrip">
+                        <a href="~/AdminTrip">
                             <i class="nc-icon nc-bus-front-12"></i>
                             <p>Trip</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./AdminDriver">
+                        <a href="~/AdminDriver">
                             <i class="nc-icon nc-single-02"></i>
                             <p>Drivers</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./AdminPassenger">
+                        <a href="~/AdminPassenger">
                             <i class="nc-icon nc-circle-10"></i>
                             <p>Passengers</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./AdminComment">
+                        <a href="~/AdminComment">
                             <i class="nc-icon nc-email-85"></i>
                             <p>Comments</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./AdminPayment">
+                        <a href="~/AdminPayment">
                             <i class="nc-icon nc-money-coins"></i>
                             <p>Payments</p>
                         </a>
@@ -168,5 +168,24 @@
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
 </body>
+
+<script>
+    let url = '@Context.Request.Path'
+
+    //$(".nav").map((item) => {
+    //    let href = $(item).attr('href');
+
+    //    if (href == url) {
+    //        $(this).parent().addClass('active').siblings().removeClass('active');
+    //    }
+    //})
+
+    $(function () {
+        $('.nav a').filter(function () { return this.href == location.href }).parent().addClass('active').siblings().removeClass('active')
+        $('.nav a').click(function () {
+            $(this).parent().addClass('active').siblings().removeClass('active')
+        })
+    })
+</script>
 
 </html>
