@@ -11,10 +11,9 @@ namespace Voyager.Models.Orm.Entities
         
         public int PassengerID { get; set; }
         public int DriverID { get; set; }
+        public int PaymentID { get; set; }
         public string DeparturePoint { get; set; }
         public string ArrivalPoint { get; set; }
-        public double Price { get; set; }
-
         public Comment Comment { get; set; }
 
         [ForeignKey("PassengerID")]
@@ -23,6 +22,7 @@ namespace Voyager.Models.Orm.Entities
         [ForeignKey("DriverID")]
         public Driver Driver{ get; set; }
 
+        [ForeignKey("PaymentID")]
         public Payment Payment { get; set; }
 
 

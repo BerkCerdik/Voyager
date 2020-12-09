@@ -77,9 +77,6 @@ namespace Voyager.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<int?>("PaymentID")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Plate")
                         .HasColumnType("text");
 
@@ -90,8 +87,6 @@ namespace Voyager.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("PaymentID");
 
                     b.ToTable("Drivers");
                 });
@@ -118,9 +113,6 @@ namespace Voyager.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<int?>("PaymentID")
-                        .HasColumnType("integer");
-
                     b.Property<string>("PaymentMethod")
                         .HasColumnType("text");
 
@@ -131,8 +123,6 @@ namespace Voyager.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("PaymentID");
 
                     b.ToTable("Passengers");
                 });
@@ -153,16 +143,10 @@ namespace Voyager.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("TripID")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("TripID")
-                        .IsUnique();
 
                     b.ToTable("Payments");
                 });
@@ -192,16 +176,19 @@ namespace Voyager.Migrations
                     b.Property<int>("PassengerID")
                         .HasColumnType("integer");
 
+                    b.Property<int>("PaymentID")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DriverID")
-                        .IsUnique();
+                    b.HasIndex("DriverID");
 
-                    b.HasIndex("PassengerID")
-                        .IsUnique();
+                    b.HasIndex("PassengerID");
+
+                    b.HasIndex("PaymentID");
 
                     b.ToTable("Trips");
                 });
@@ -217,69 +204,51 @@ namespace Voyager.Migrations
                     b.Navigation("Trip");
                 });
 
-            modelBuilder.Entity("Voyager.Models.Orm.Entities.Driver", b =>
-                {
-                    b.HasOne("Voyager.Models.Orm.Entities.Payment", "Payment")
-                        .WithMany()
-                        .HasForeignKey("PaymentID");
-
-                    b.Navigation("Payment");
-                });
-
-            modelBuilder.Entity("Voyager.Models.Orm.Entities.Passenger", b =>
-                {
-                    b.HasOne("Voyager.Models.Orm.Entities.Payment", "Payment")
-                        .WithMany()
-                        .HasForeignKey("PaymentID");
-
-                    b.Navigation("Payment");
-                });
-
-            modelBuilder.Entity("Voyager.Models.Orm.Entities.Payment", b =>
-                {
-                    b.HasOne("Voyager.Models.Orm.Entities.Trip", "Trip")
-                        .WithOne("Payment")
-                        .HasForeignKey("Voyager.Models.Orm.Entities.Payment", "TripID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Trip");
-                });
-
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Trip", b =>
                 {
                     b.HasOne("Voyager.Models.Orm.Entities.Driver", "Driver")
-                        .WithOne("Trip")
-                        .HasForeignKey("Voyager.Models.Orm.Entities.Trip", "DriverID")
+                        .WithMany("Trips")
+                        .HasForeignKey("DriverID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Voyager.Models.Orm.Entities.Passenger", "Passenger")
-                        .WithOne("Trip")
-                        .HasForeignKey("Voyager.Models.Orm.Entities.Trip", "PassengerID")
+                        .WithMany("Trips")
+                        .HasForeignKey("PassengerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Voyager.Models.Orm.Entities.Payment", "Payment")
+                        .WithMany("Trips")
+                        .HasForeignKey("PaymentID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Driver");
 
                     b.Navigation("Passenger");
+
+                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Driver", b =>
                 {
-                    b.Navigation("Trip");
+                    b.Navigation("Trips");
                 });
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Passenger", b =>
                 {
-                    b.Navigation("Trip");
+                    b.Navigation("Trips");
+                });
+
+            modelBuilder.Entity("Voyager.Models.Orm.Entities.Payment", b =>
+                {
+                    b.Navigation("Trips");
                 });
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Trip", b =>
                 {
                     b.Navigation("Comment");
-
-                    b.Navigation("Payment");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,9 +11,7 @@ namespace Voyager.Models.Orm.Entities
 
         public string Plate { get; set; }
 
-        public Trip Trip { get; set; }
-
-        public Payment Payment { get; set; }
+        public List<Trip> Trips { get; set; }
 
     }
 }
