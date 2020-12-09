@@ -13,6 +13,7 @@ namespace Voyager.Models.Orm.Entities
         public int DriverID { get; set; }
         public string DeparturePoint { get; set; }
         public string ArrivalPoint { get; set; }
+        public double Price { get; set; }
 
         public Comment Comment { get; set; }
 
@@ -23,6 +24,7 @@ namespace Voyager.Models.Orm.Entities
         public Driver Driver{ get; set; }
 
         public Payment Payment { get; set; }
+
 
 
     }
