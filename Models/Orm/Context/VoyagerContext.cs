@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Voyager.Models.Orm.Entities;
+using Voyager.Models.Vm;
 
 namespace Voyager.Models.Orm.Context
 {
@@ -42,6 +43,10 @@ namespace Voyager.Models.Orm.Context
 
             return base.SaveChanges();
         }
+
+        public DbSet<Voyager.Models.Vm.DriverVM> DriverVM { get; set; }
+
+        public DbSet<Voyager.Models.Vm.PassengerVM> PassengerVM { get; set; }
 
 
 

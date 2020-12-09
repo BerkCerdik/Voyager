@@ -35,9 +35,20 @@ namespace Voyager.Controllers
 
         public IActionResult PassengerDetail(int id)
         {
-            Passenger passenger= _context.Passengers.FirstOrDefault(x => x.ID == id);
-
-            return Json(passenger);
+            return View();
         }
+        public IActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Edit(int ID)
+        {
+            Passenger passenger = _context.Passengers.FirstOrDefault(x => x.ID == ID);
+
+            return RedirectToAction("Index", "AdminPassenger");
+        }
+
+
     }
 }

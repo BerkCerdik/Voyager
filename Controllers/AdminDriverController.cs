@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Voyager.Models.Orm.Context;
 using Voyager.Models.Orm.Entities;
 using Voyager.Models.Vm;
@@ -12,6 +13,8 @@ namespace Voyager.Controllers
     public class AdminDriverController : Controller
     {
         private readonly VoyagerContext _context;
+        private object db;
+
         public AdminDriverController(VoyagerContext context)
         {
             _context = context;
@@ -21,7 +24,7 @@ namespace Voyager.Controllers
         {
             List<DriverVM> drivers = _context.Drivers.Select(q => new DriverVM()
             {
-
+                ID=q.ID,
                 Email = q.Email,
                 Name = q.Name,
                 Password = q.Password,
@@ -62,6 +65,18 @@ namespace Voyager.Controllers
 
             return Json(driver);
         }
+
+        public IActionResult Edit()
+        {
+
+            return View();
+        }
+
+        public IActionResult Detail()
+        {
+            return View();
+        }
+        
 
 
     }
