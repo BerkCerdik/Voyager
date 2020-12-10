@@ -32,7 +32,7 @@ namespace Voyager.Controllers
 
             return View(passengers);
         }
-
+        
         public IActionResult PassengerDetail(int id)
         {
             return View();
@@ -41,7 +41,7 @@ namespace Voyager.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(int ID)
         {
             Passenger passenger = _context.Passengers.FirstOrDefault(x => x.ID == ID);

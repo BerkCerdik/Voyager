@@ -72,9 +72,16 @@ namespace Voyager.Controllers
             return View();
         }
 
-        public IActionResult Detail()
+        public IActionResult Detail(int id)
         {
-            return View();
+            Driver driver = _context.Drivers.FirstOrDefault(x => x.ID == id);
+            
+            DriverVM model = new DriverVM();
+            model.Name = driver.Name;
+            model.Surname = driver.Surname;
+            model.Email = driver.Email;
+
+            return View(model);
         }
         
 
