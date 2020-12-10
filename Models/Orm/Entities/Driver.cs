@@ -13,7 +13,6 @@ namespace Voyager.Models.Orm.Entities
 
         public List<Trip> Trip { get; set; }
 
-        public Payment Payment { get; set; }
 
     }
 }

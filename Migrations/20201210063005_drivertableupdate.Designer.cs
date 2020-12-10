@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Voyager.Models.Orm.Context;
@@ -9,9 +10,10 @@ using Voyager.Models.Orm.Context;
 namespace Voyager.Migrations
 {
     [DbContext(typeof(VoyagerContext))]
-    partial class VoyagerContextModelSnapshot : ModelSnapshot
+    [Migration("20201210063005_drivertableupdate")]
+    partial class drivertableupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
