@@ -66,10 +66,17 @@ namespace Voyager.Controllers
             return Json(driver);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
 
-            return View();
+            Driver driver = _context.Drivers.FirstOrDefault(x => x.ID == id);
+
+            DriverVM model = new DriverVM();
+            model.Name = driver.Name;
+            model.Surname = driver.Surname;
+            model.Email = driver.Email;
+
+            return View(model);
         }
 
         public IActionResult Detail(int id)

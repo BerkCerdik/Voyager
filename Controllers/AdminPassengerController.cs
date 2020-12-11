@@ -35,19 +35,28 @@ namespace Voyager.Controllers
         
         public IActionResult PassengerDetail(int id)
         {
-            return View();
+            Passenger passenger = _context.Passengers.FirstOrDefault(x => x.ID == id);
+
+            PassengerVM model = new PassengerVM();
+            model.Name = passenger.Name;
+            model.Surname = passenger.Surname;
+            model.Email = passenger.Email;
+
+            return View(model);
         }
-        public IActionResult Edit()
-        {
-            return View();
-        }
-        [HttpGet]
         public IActionResult Edit(int ID)
         {
             Passenger passenger = _context.Passengers.FirstOrDefault(x => x.ID == ID);
 
-            return RedirectToAction("Index", "AdminPassenger");
+            PassengerVM model = new PassengerVM();
+            model.Name = passenger.Name;
+            model.Surname = passenger.Surname;
+            model.Email = passenger.Email;
+
+            return View(model);
         }
+
+        
 
 
     }

@@ -48,6 +48,8 @@ namespace Voyager.Models.Orm.Context
 
         public DbSet<Voyager.Models.Vm.PassengerVM> PassengerVM { get; set; }
 
+        public DbSet<Voyager.Models.Vm.TripVM> TripVM { get; set; }
+
 
 
     }

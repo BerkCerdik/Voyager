@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Voyager.Models.Orm.Context;
+using Voyager.Models.Orm.Entities;
 using Voyager.Models.Vm;
 
 namespace Voyager.Controllers
@@ -37,6 +38,17 @@ namespace Voyager.Controllers
             }).ToList();
 
             return View(trips);
+        }
+
+        public IActionResult TripDetails(int id)
+        {
+            Trip trip = _context.Trips.FirstOrDefault(x => x.ID == id);
+            TripVM model = new TripVM();
+            trip.ID = model.ID;
+            
+
+
+            return View(model);
         }
     }
 }

@@ -3,6 +3,73 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@model List<Voyager.Models.Vm.CommentVM>
+<<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header">
+            <h4 class="card-title"> Comment Control Panel</h4>            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Surname
+                    </th>
+                    <th>
+                        Driver
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                    <th>
+                        Details
+                    </th>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.TripID
+                                </td>
+                                <td>
+                                    @item.Point
+                                </td>
+                                @*<td>
+                                    @item.DriverName + " " + @item.DriverLastname 
+                                </td>*@
+                                <td>
+                                    @item.Content
+                                </td>
 
-<h1>Index</h1>
+                                <td>
+                                    <a href="./AdminComment/Detail/@item.ID">
+                                        <button class="btn btn-outline-default btn-block">
+                                            Detail
+                                        </button>
+                                    </a>
+                                </td>
+                                @*<td>
+                                    <a href="./AdminComment/Edit/@item.ID">
+                                        <button class="btn btn-outline-warning btn-block">
+                                            Edit
+                                        </button>
+                                    </a>
+                                </td>*@
+                                @*delete*@
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
 
