@@ -59,13 +59,6 @@ namespace Voyager.Controllers
            return RedirectToAction("Index","AdminDriver");
         }
 
-        public IActionResult DriverDetail(int id)
-        {
-            Driver driver= _context.Drivers.FirstOrDefault(x => x.ID == id);
-
-            return Json(driver);
-        }
-
         public IActionResult Edit(int id)
         {
 
@@ -73,24 +66,59 @@ namespace Voyager.Controllers
 
             DriverVM model = new DriverVM();
             model.Name = driver.Name;
+            model.Password = driver.Password;
             model.Surname = driver.Surname;
             model.Email = driver.Email;
+            model.CarPlate = driver.Plate;
+            model.DriverLicense = driver.Experience;
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(DriverVM model)
+        {
+            Driver driver = _context.Drivers.FirstOrDefault(x => x.ID == model.ID);
+
+            if (ModelState.IsValid)
+            {
+                driver.Name = model.Name;
+                driver.Surname = model.Surname;
+                driver.Experience = model.DriverLicense;
+                driver.Email = model.Email;
+                driver.Password = model.Password;
+                driver.Plate = model.CarPlate;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index","AdminDriver");
+
         }
 
         public IActionResult Detail(int id)
         {
             Driver driver = _context.Drivers.FirstOrDefault(x => x.ID == id);
-            
+
             DriverVM model = new DriverVM();
             model.Name = driver.Name;
             model.Surname = driver.Surname;
             model.Email = driver.Email;
+            model.Password = driver.Password;
+            model.CarPlate = driver.Plate;
 
             return View(model);
         }
-        
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Driver driver = _context.Drivers.FirstOrDefault(x => x.ID == id);
+
+            driver.IsDeleted = true;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
 
     }

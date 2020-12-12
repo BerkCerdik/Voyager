@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" >
                     <thead class=" text-primary">
                     <th>
                         Name
@@ -34,43 +34,51 @@
                     <th>
                         Edit
                     </th>
+                    <th>
+                        Delete
+                    </th>
 
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @item.Name
-                            </td>
-                            <td>
-                                @item.Surname
-                            </td>
-                            <td>
-                                @item.Password
-                            </td>
-                            <td>
-                                @item.Email
-                            </td>
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Surname
+                                </td>
+                                <td>
+                                    @item.Password
+                                </td>
+                                <td>
+                                    @item.Email
+                                </td>
+                                <td>
+                                    <a href="./AdminDriver/Detail/@item.ID">
+                                        <button class="btn btn-outline-default btn-block">
+                                            Detail
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="./AdminDriver/Edit/@item.ID">
+                                        <button class="btn btn-outline-warning btn-block">
+                                            Edit
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="./AdminDriver/Delete/@item.ID" id="@item.ID" class="delete">
+                                        <button class="btn btn-outline-danger btn-block ">
+                                            Delete
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
 
-                            <td>
-                                <a href="./AdminDriver/Detail/@item.ID">
-                                    <button class="btn btn-outline-default btn-block">
-                                        Detail
-                                    </button>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="./AdminDriver/Edit/@item.ID">
-                                    <button class="btn btn-outline-warning btn-block">
-                                        Edit
-                                    </button>
-                                </a>
-                            </td>
-                            @*delete*@
-                        </tr>
-
-                        }
+                         }
 
                     </tbody>
                 </table>
@@ -79,3 +87,24 @@
     </div>
 
 </div>
+
+<!-- Page specific script -->
+<script>
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/AdminDriver/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                console.log(msg);
+                $("#" + id).fadeOut();
+                window.location.href = "/AdminDriver/"
+                alert("Deleted successfully!!!");
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
+</script>
