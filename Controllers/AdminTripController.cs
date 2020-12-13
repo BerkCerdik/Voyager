@@ -44,8 +44,13 @@ namespace Voyager.Controllers
         {
             Trip trip = _context.Trips.FirstOrDefault(x => x.ID == id);
             TripVM model = new TripVM();
-            trip.ID = model.ID;
-            
+            model.PassengerName = trip.Passenger.Name;
+            model.PassengerLastname = trip.Passenger.Surname;
+            model.DriverName = trip.Driver.Name;
+            model.DriverLastname = trip.Driver.Surname;
+            model.Price = trip.Payment.Price;
+            model.DeparturePoint = trip.DeparturePoint;
+            model.ArrivalPoint = trip.ArrivalPoint;
 
 
             return View(model);
