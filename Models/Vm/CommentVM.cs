@@ -17,8 +17,6 @@ namespace Voyager.Models.Vm
         public int TripID { get; set; }
         public string Content { get; set; }
         public int Point { get; set; }
-
-        [ForeignKey("TripID")]
-        public Trip Trip { get; set; }
+               
     }
 }

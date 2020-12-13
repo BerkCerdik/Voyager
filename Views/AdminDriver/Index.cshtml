@@ -70,11 +70,11 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="./AdminDriver/Delete/@item.ID" id="@item.ID" class="delete">
-                                        <button onclick="Delete(@item.ID)" class="btn btn-outline-danger btn-block ">
+                                    
+                                        <button @*onclick="Delete(@item.ID)"*@ class="btn btn-outline-danger btn-block delete">
                                             Delete
                                         </button>
-                                    </a>
+                                    
                                 </td>
                             </tr>
 
@@ -90,20 +90,5 @@
 
 <!-- Page specific script -->
 <script>
-    $(document).on("click", ".delete", function () {
-        let id = $(this).attr("id");
-        $.ajax({
-            url: "/AdminDriver/Delete",
-            type: "POST",
-            data: { id: id },
-            success: function (msg) {
-                alert("Deleted successfully!!!");
-                $("#" + id).fadeOut();
-                //window.location.href = "/AdminDriver/"
-            },
-            error: function (err) {
-                alert("Failed!");
-            }
-        })
-    })
+    
 </script>

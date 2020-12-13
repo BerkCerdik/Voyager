@@ -50,6 +50,8 @@ namespace Voyager.Models.Orm.Context
 
         public DbSet<Voyager.Models.Vm.TripVM> TripVM { get; set; }
 
+        public DbSet<Voyager.Models.Vm.CommentVM> CommentVM { get; set; }
+
 
 
     }

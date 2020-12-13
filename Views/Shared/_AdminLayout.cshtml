@@ -186,6 +186,22 @@
             $(this).parent().addClass('active').siblings().removeClass('active')
         })
     })
+
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("ID");
+        $.ajax({
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                alert("Deleted successfully!!!");
+                $("#" + id).fadeOut();
+                window.location.href = url
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
 </script>
 
 </html>
