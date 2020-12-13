@@ -6,7 +6,7 @@ namespace Voyager.Models.Orm.Entities
     public class Payment : BaseEntity
     {
         public double Price { get; set; }
-        public List<Trip> Trips { get; set; }
+        public List<Trip> Trip { get; set; }
 
     }
 }
