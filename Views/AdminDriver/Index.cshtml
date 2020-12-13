@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table" >
+                <table class="table">
                     <thead class=" text-primary">
                     <th>
                         Name
@@ -71,14 +71,14 @@
                                 </td>
                                 <td>
                                     <a href="./AdminDriver/Delete/@item.ID" id="@item.ID" class="delete">
-                                        <button class="btn btn-outline-danger btn-block ">
+                                        <button onclick="Delete(@item.ID)" class="btn btn-outline-danger btn-block ">
                                             Delete
                                         </button>
                                     </a>
                                 </td>
                             </tr>
 
-                         }
+                        }
 
                     </tbody>
                 </table>
@@ -97,10 +97,9 @@
             type: "POST",
             data: { id: id },
             success: function (msg) {
-                console.log(msg);
-                $("#" + id).fadeOut();
-                window.location.href = "/AdminDriver/"
                 alert("Deleted successfully!!!");
+                $("#" + id).fadeOut();
+                //window.location.href = "/AdminDriver/"
             },
             error: function (err) {
                 alert("Failed!");

@@ -52,6 +52,7 @@ namespace Voyager.Controllers
                 driver.Email = model.Email;
                 driver.Password = model.Password;
                 driver.Plate = model.CarPlate;
+                driver.Password = model.Password;
                 _context.Drivers.Add(driver);
                 _context.SaveChanges();
             }

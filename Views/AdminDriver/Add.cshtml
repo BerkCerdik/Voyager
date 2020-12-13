@@ -7,78 +7,78 @@
 @model Voyager.Models.Vm.DriverVM
 
 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card card-user">
-                <div class="card-header">
-                    <h5 class="card-title">Add Driver</h5>
-                </div>
-                <div class="card-body">
-                    <form action="/AdminDriver/Add" method="post">
-                        <div class="row">
-                            <div class="col-md-6 pr-1">
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.Name, new { @class = "bmd-label-floating" })
-                                    @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="col-md-6 pl-1">
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.Surname, new { @class = "bmd-label-floating" })
-                                    @Html.TextBoxFor(q => q.Surname, new { @class = "form-control" })
-                                </div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Add Driver</h5>
+            </div>
+            <div class="card-body">
+                <form action="/AdminDriver/Add" method="post">
+                    <div class="row">
+                        <div class="col-md-6 pr-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.Name, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 pr-1">
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.Email, new { @class = "bmd-label-floating" })
-                                    @Html.TextBoxFor(q => q.Email, new { @class = "form-control" })
-                                </div>
+                        <div class="col-md-6 pl-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.Surname, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.Surname, new { @class = "form-control" })
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                    @*@Html.LabelFor(q => q.Name, new { @class = "bmd-label-floating" })
-                                        @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
-                                        <label>Driver License Taken Date</label>
-                                        <input type="datetime" class="form-control" placeholder="Driver License">*@
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 pr-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.Email, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.Email, new { @class = "form-control" })
                             </div>
-                            <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.CarPlate, new { @class = "bmd-label-floating" })
-                                    @Html.TextBoxFor(q => q.CarPlate, new { @class = "form-control" })
-                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.DriverLicense, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.DriverLicense, new { @type = "date", @name = "driverlicense", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
                             </div>
-                            <div class="col-md-4 pr-1">
-                                <div>
-                                    <label>IsDeleted:</label>
-                                    <label>True:</label>
-                                    @Html.RadioButton("IsDeleted", "True")
-                                    <label>False:</label>
-                                    @Html.RadioButton("IsDeleted", "False")
-                                </div>
+                        </div>
+                        <div class="col-md-4 pr-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.CarPlate, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.CarPlate, new { @class = "form-control" })
                             </div>
+                        </div>
+                        <div class="col-md-4 pr-1">
+                            <div>
+                                @Html.LabelFor(q => q.Password, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.Password, new { @class = "form-control" })
 
+                            </div>
+                            <div>
+                                @Html.LabelFor(q => q.Confirmpassword)
+                                @Html.PasswordFor(q => q.Confirmpassword, new { @placeholder = "Enter confirm password", @class = "form-control" })
+                            </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>About Me</label>
-                                    <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
-                                </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>About Me</label>
+                                <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="update ml-auto mr-auto">
-                                <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Add Driver</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
