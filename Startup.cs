@@ -25,7 +25,7 @@ namespace Voyager
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddRazorRuntimeCompilation();
 
             services.AddDbContext<VoyagerContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
