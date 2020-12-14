@@ -52,6 +52,19 @@ namespace Voyager.Controllers
             model.Name = passenger.Name;
             model.Surname = passenger.Surname;
             model.Email = passenger.Email;
+            model.ID = passenger.ID;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(PassengerVM model)
+        {
+
+            Passenger passenger = _context.Passengers.FirstOrDefault(q => q.ID == model.ID);
+            passenger.Email = model.Email;
+
+            _context.SaveChanges();
 
             return View(model);
         }

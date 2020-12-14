@@ -32,14 +32,8 @@ namespace Voyager.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("DriverID")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
-
-                    b.Property<int>("PassengerID")
-                        .HasColumnType("integer");
 
                     b.Property<int>("Point")
                         .HasColumnType("integer");
@@ -51,10 +45,6 @@ namespace Voyager.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("DriverID");
-
-                    b.HasIndex("PassengerID");
 
                     b.HasIndex("TripID")
                         .IsUnique();
@@ -203,162 +193,13 @@ namespace Voyager.Migrations
                     b.ToTable("Trips");
                 });
 
-            modelBuilder.Entity("Voyager.Models.Vm.CommentVM", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("Content")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DriverLastname")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DriverName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PassengerLastname")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PassengerName")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Point")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TripID")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CommentVM");
-                });
-
-            modelBuilder.Entity("Voyager.Models.Vm.DriverVM", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("CarPlate")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Confirmpassword")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DriverLicense")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("DriverVM");
-                });
-
-            modelBuilder.Entity("Voyager.Models.Vm.PassengerVM", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("PassengerVM");
-                });
-
-            modelBuilder.Entity("Voyager.Models.Vm.TripVM", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
-
-                    b.Property<string>("ArrivalPoint")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DeparturePoint")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DriverLastname")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DriverName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PassengerLastname")
-                        .HasColumnType("text");
-
-                    b.Property<string>("PassengerName")
-                        .HasColumnType("text");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("double precision");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("TripVM");
-                });
-
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Comment", b =>
                 {
-                    b.HasOne("Voyager.Models.Orm.Entities.Driver", "Driver")
-                        .WithMany()
-                        .HasForeignKey("DriverID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Voyager.Models.Orm.Entities.Passenger", "Passenger")
-                        .WithMany()
-                        .HasForeignKey("PassengerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Voyager.Models.Orm.Entities.Trip", "Trip")
                         .WithOne("Comment")
                         .HasForeignKey("Voyager.Models.Orm.Entities.Comment", "TripID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Driver");
-
-                    b.Navigation("Passenger");
 
                     b.Navigation("Trip");
                 });

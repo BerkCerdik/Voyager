@@ -21,17 +21,17 @@ namespace Voyager.Controllers
         }
         public IActionResult Index()
         {
-            List<CommentVM> comments = _context.Comments.Include(a => a.Trip).ThenInclude(Trip =>  Trip.Passenger).Select(q => new CommentVM()
+            List<CommentVM> comments = _context.Comments.Include(a => a.Trip).ThenInclude(Trip =>  Trip.Passenger).Include(a => a.Trip).ThenInclude(Trip => Trip.Driver).Select(q => new CommentVM()
             
             {
                 ID = q.ID,
                 TripID=q.TripID,
                 Content =q.Content,
                 Point=q.Point,
-                PassengerName = q.Passenger.Name,
-                PassengerLastname = q.Passenger.Surname,
-                //DriverName = q.Driver.Name,
-                //DriverLastname = q.Driver.Surname
+                PassengerName = q.Trip.Passenger.Name,
+                PassengerLastname = q.Trip.Passenger.Surname,
+                DriverName = q.Trip.Driver.Name,
+                DriverLastname = q.Trip.Driver.Surname
 
 
 

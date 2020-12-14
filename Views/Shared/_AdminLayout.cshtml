@@ -18,6 +18,22 @@
     <link href="/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="/demo/demo.css" rel="stylesheet" />
+
+    <!--   Core JS Files   -->
+    <script src="/js/core/jquery.min.js"></script>
+    <script src="/js/core/popper.min.js"></script>
+    <script src="/js/core/bootstrap.min.js"></script>
+    <script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+
+
 </head>
 
 <body class="">
@@ -154,19 +170,7 @@
             </footer>
         </div>
     </div>
-    <!--   Core JS Files   -->
-    <script src="/js/core/jquery.min.js"></script>
-    <script src="/js/core/popper.min.js"></script>
-    <script src="/js/core/bootstrap.min.js"></script>
-    <script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chart JS -->
-    <script src="/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+
 </body>
 
 <script>
@@ -187,21 +191,7 @@
         })
     })
 
-    $(document).on("click", ".delete", function () {
-        let id = $(this).attr("ID");
-        $.ajax({
-            type: "POST",
-            data: { id: id },
-            success: function (msg) {
-                alert("Deleted successfully!!!");
-                $("#" + id).fadeOut();
-                window.location.href = url
-            },
-            error: function (err) {
-                alert("Failed!");
-            }
-        })
-    })
+ 
 </script>
 
 </html>

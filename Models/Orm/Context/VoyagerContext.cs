@@ -44,15 +44,6 @@ namespace Voyager.Models.Orm.Context
             return base.SaveChanges();
         }
 
-        public DbSet<Voyager.Models.Vm.DriverVM> DriverVM { get; set; }
-
-        public DbSet<Voyager.Models.Vm.PassengerVM> PassengerVM { get; set; }
-
-        public DbSet<Voyager.Models.Vm.TripVM> TripVM { get; set; }
-
-        public DbSet<Voyager.Models.Vm.CommentVM> CommentVM { get; set; }
-
-        public DbSet<Voyager.Models.Vm.PaymentVM> PaymentVM { get; set; }
 
 
 
