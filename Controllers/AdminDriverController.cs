@@ -58,6 +58,7 @@ namespace Voyager.Controllers
             }
 
            return RedirectToAction("Index","AdminDriver");
+
         }
 
         public IActionResult Edit(int id)

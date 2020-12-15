@@ -52,6 +52,8 @@ namespace Voyager.Models.Orm.Context
 
         public DbSet<Voyager.Models.Vm.CommentVM> CommentVM { get; set; }
 
+        public DbSet<Voyager.Models.Vm.PaymentVM> PaymentVM { get; set; }
+
 
 
     }
