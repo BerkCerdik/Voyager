@@ -93,7 +93,6 @@ namespace Voyager.Controllers
                 _context.SaveChanges();
             }
             return RedirectToAction("Index","AdminDriver");
-
         }
 
         public IActionResult Detail(int id)

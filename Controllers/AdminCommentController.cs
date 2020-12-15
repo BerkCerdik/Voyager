@@ -21,7 +21,7 @@ namespace Voyager.Controllers
         }
         public IActionResult Index()
         {
-            List<CommentVM> comments = _context.Comments.Include(a => a.Passenger).Include(b => b.Driver).Select(q => new CommentVM()
+            List<CommentVM> comments = _context.Comments.Select(q => new CommentVM()
             
             {
                 ID = q.ID,
