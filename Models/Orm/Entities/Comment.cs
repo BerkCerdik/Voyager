@@ -13,8 +13,7 @@ namespace Voyager.Models.Orm.Entities
 
         [ForeignKey("TripID")]
         public Trip Trip { get; set; }
-
-        
+ 
 
 
     }

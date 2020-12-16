@@ -71,7 +71,7 @@
                                 </td>
                                 <td>
                                     
-                                        <button @*onclick="Delete(@item.ID)"*@ class="btn btn-outline-danger btn-block delete">
+                                        <button id="@item.ID" class="btn btn-outline-danger btn-block delete">
                                             Delete
                                         </button>
                                     
@@ -90,5 +90,20 @@
 
 <!-- Page specific script -->
 <script>
-    
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url:"/AdminDriver/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+               // alert("Deleted successfully!!!");
+               // $("#" + id).fadeOut();
+                window.location.href = "/AdminDriver"
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
 </script>

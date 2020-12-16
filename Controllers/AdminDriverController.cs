@@ -22,7 +22,7 @@ namespace Voyager.Controllers
 
         public IActionResult Index()
         {
-            List<DriverVM> drivers = _context.Drivers.Select(q => new DriverVM()
+            List<DriverVM> drivers = _context.Drivers.Where(q => q.IsDeleted == false).Select(q => new DriverVM()
             {
                 ID=q.ID,
                 Email = q.Email,
@@ -55,9 +55,11 @@ namespace Voyager.Controllers
                 driver.Password = model.Password;
                 _context.Drivers.Add(driver);
                 _context.SaveChanges();
+                return RedirectToAction("Index", "AdminDriver");
             }
 
-           return RedirectToAction("Index","AdminDriver");
+                return View();
+
 
         }
 

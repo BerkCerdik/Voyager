@@ -20,10 +20,10 @@ namespace Voyager.Controllers
         }
             public IActionResult Index()
         {
-            List<PaymentVM> payments = _context.Payments.Include(a => a.Trip).Select(q => new PaymentVM()
+            List<PaymentVM> payments = _context.Payments.Include(a => a.Trips).Select(q => new PaymentVM()
             {
                 Price=q.Price,
-                Trips=q.Trip
+                Trips=q.Trips
 
             }).ToList();
 
