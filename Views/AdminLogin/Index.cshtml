@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model Voyager.Models.Vm.AdminUserVM
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <form action="/AdminLogin/Index" method="post"></form>
+
+    <div>
+        @Html.LabelFor(q => q.EMail)
+        @Html.TextBoxFor(q => q.EMail)
+    </div>
+    <div>
+        @Html.LabelFor(q => q.Password)
+        @Html.TextBoxFor(q => q.Password)
+    </div>
+    <div>
+        <input type="Su" name="name" value="Sign In" />
+    </div>
+    
+
+</body>
+</html>
