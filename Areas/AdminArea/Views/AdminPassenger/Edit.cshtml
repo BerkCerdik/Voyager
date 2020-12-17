@@ -1,8 +1,8 @@
 ﻿@model Voyager.Models.Vm.PassengerVM
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h1>Edit</h1>
@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit" action="/AdminPassenger/Edit" method="POST">
+        <form asp-action="Edit" action="/AdminArea/AdminPassenger/Edit" method="POST">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
@@ -43,6 +43,6 @@
 </div>
 
 <div>
-    <a asp-action="Index" href="~/AdminPassenger">Back to List</a>
+    <a asp-action="Index" href="~/AdminArea/AdminPassenger">Back to List</a>
 </div>
 

@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using Voyager.Models.Vm
+@model List<PaymentVM>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> Payment Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th>
+                                Trip
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                Details
+                            </th>
+                            @*<th>
+                                    Email
+                                </th>
+                                <th>
+                                    View
+                                </th>
+                                <th>
+                                    Edit
+                                </th>*@
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Trips
+                                        </td>
+                                        <td>
+                                            @item.Price
+                                        </td>
+                                        @*<td>
+                                                @item.
+                                            </td>
+                                            <td>
+                                                @item.
+                                            </td>
+                                            <td>
+                                                <a href="/AdminPayment/PaymentDetail/@item.ID">
+                                                    <button class="btn btn-outline-default btn-block">
+                                                        Detail
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="/AdminPayment/Edit/@item.ID">
+                                                    <button class="btn btn-outline-warning">
+                                                        Edit
+                                                    </button>
+                                                </a>
+                                            </td>*@
+                                        @*delete*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

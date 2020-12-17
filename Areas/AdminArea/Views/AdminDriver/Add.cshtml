@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Add";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
 @model Voyager.Models.Vm.DriverVM
@@ -14,7 +14,7 @@
                 <h5 class="card-title">Add Driver</h5>
             </div>
             <div class="card-body">
-                <form action="/AdminDriver/Add" method="post">
+                <form action="/AdminArea/AdminDriver/Add" method="post">
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">

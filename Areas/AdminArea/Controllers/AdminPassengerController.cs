@@ -7,8 +7,9 @@ using Voyager.Models.Orm.Context;
 using Voyager.Models.Orm.Entities;
 using Voyager.Models.Vm;
 
-namespace Voyager.Controllers
+namespace Voyager.Areas.AdminArea.Controllers
 {
+    [Area("AdminArea")]
     public class AdminPassengerController : Controller
     {
         private readonly VoyagerContext _context;

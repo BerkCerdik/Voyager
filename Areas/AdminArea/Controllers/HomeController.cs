@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Voyager.Controllers
+namespace Voyager.Areas.AdminArea.Controllers
 {
+    [Area("AdminArea")]
     public class HomeController : Controller
     {
         public IActionResult Index()

@@ -1,12 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 @using Voyager.Models.Vm
-@model List<TripVM>
+@model List<PassengerVM>
 <div class="content">
     <div class="row">
         <div class="col-md-12">
@@ -19,25 +18,22 @@
                         <table class="table">
                             <thead class=" text-primary">
                             <th>
-                                ID
+                                Name
                             </th>
                             <th>
-                                Passenger Full Name
+                                Country
                             </th>
                             <th>
-                                Driver Full Name
+                                City
                             </th>
                             <th>
-                                Departure Point
+                                Email
                             </th>
                             <th>
-                                Arrival Point
+                                View
                             </th>
                             <th>
-                                Price
-                            </th>
-                            <th>
-                                Detail
+                                Edit
                             </th>
                             </thead>
                             <tbody>
@@ -45,29 +41,31 @@
                                 {
                                     <tr>
                                         <td>
-                                            @item.ID
+                                            @item.Name
                                         </td>
                                         <td>
-                                            @item.PassengerName @item.PassengerLastname
+                                            @item.Surname
                                         </td>
                                         <td>
-                                            @item.DriverName @item.DriverLastname
+                                            @item.Password
                                         </td>
                                         <td>
-                                            @item.DeparturePoint
+                                            @item.Email
                                         </td>
                                         <td>
-                                            @item.ArrivalPoint
-                                        </td>
-                                        <td>
-                                            @item.Price
-                                        </td>
-                                        <td>
-                                            <a href="/AdminTrip/TripDetails/@item.ID">
+                                            <a href="/AdminPassenger/PassengerDetail/@item.ID">
                                                 <button class="btn btn-outline-default btn-block">
                                                     Detail
-                                                </button></a>
-</td>
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/AdminPassenger/Edit/@item.ID">
+                                                <button class="btn btn-outline-warning">
+                                                    Edit
+                                                </button>
+                                            </a>
+                                        </td>
                                         @*delete*@
                                     </tr>
                                 }

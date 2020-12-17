@@ -1,17 +1,18 @@
-﻿@model Voyager.Models.Vm.DriverVM
+﻿
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
+@model Voyager.Models.Vm.DriverVM
 <h1>Edit</h1>
 
 <h4>DriverVM</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form action="/AdminDriver/Edit" method="post">
+        <form action="/AdminArea/AdminDriver/Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
@@ -57,6 +58,6 @@
 </div>
 
 <div>
-    <a asp-action="Index" href="~/AdminDriver">Back to List</a>
+    <a asp-action="Index" href="~/AdminArea/AdminDriver">Back to List</a>
 </div>
 

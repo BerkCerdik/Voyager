@@ -1,7 +1,7 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
 @model List<Voyager.Models.Vm.DriverVM>
@@ -10,7 +10,7 @@
     <div class="card card-plain">
         <div class="card-header">
             <h4 class="card-title"> Driver Control Panel</h4>
-            <a class="card-category" href="/AdminDriver/Add"> <button class="btn btn-primary btn-round">Add Driver</button></a>
+            <a class="card-category" href="/AdminArea/AdminDriver/Add"> <button class="btn btn-primary btn-round">Add Driver</button></a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -70,11 +70,11 @@
                                     </a>
                                 </td>
                                 <td>
-                                    
-                                        <button id="@item.ID" class="btn btn-outline-danger btn-block delete">
-                                            Delete
-                                        </button>
-                                    
+
+                                    <button id="@item.ID" class="btn btn-outline-danger btn-block delete">
+                                        Delete
+                                    </button>
+
                                 </td>
                             </tr>
 
@@ -93,13 +93,13 @@
     $(document).on("click", ".delete", function () {
         let id = $(this).attr("id");
         $.ajax({
-            url:"/AdminDriver/Delete",
+            url: "/AdminArea/AdminDriver/Delete",
             type: "POST",
             data: { id: id },
             success: function (msg) {
-               // alert("Deleted successfully!!!");
-               // $("#" + id).fadeOut();
-                window.location.href = "/AdminDriver"
+                // alert("Deleted successfully!!!");
+                // $("#" + id).fadeOut();
+                window.location.href = "/AdminArea/AdminDriver"
             },
             error: function (err) {
                 alert("Failed!");

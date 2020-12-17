@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Voyager.Models.Orm.Context;
 using Voyager.Models.Vm;
 
-namespace Voyager.Controllers
+namespace Voyager.Areas.AdminArea.Controllers
 {
+    [Area("AdminArea")]
     public class AdminPaymentController : Controller
     {
 

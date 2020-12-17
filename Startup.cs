@@ -26,7 +26,8 @@ namespace Voyager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddRazorRuntimeCompilation();
-
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddDbContext<VoyagerContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
@@ -45,7 +46,15 @@ namespace Voyager
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                name: "Areas",
+                areaName: "AdminArea",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
 
             });
         }
