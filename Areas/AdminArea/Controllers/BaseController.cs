@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
@@ -10,6 +11,7 @@ using Voyager.Models.Orm.Entities;
 
 namespace Voyager.Areas.AdminArea.Controllers
 {
+    [Authorize]
     [Area("AdminArea")]
     public class BaseController : Controller
     {

@@ -16,7 +16,7 @@ namespace Voyager.Areas.AdminArea.Controllers
     public class AdminDriverController : BaseController
     {
         private readonly VoyagerContext _context;
-        private object db;
+        
 
         public AdminDriverController(VoyagerContext context, IMemoryCache memoryCache) : base(context, memoryCache)
         {

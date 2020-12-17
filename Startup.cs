@@ -38,7 +38,7 @@ namespace Voyager
             services.AddResponseCaching();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
-                options.LoginPath = "/AdminLogin/Index";
+                options.LoginPath = "/AdminArea/AdminLogin/Index";
             });
         }
 

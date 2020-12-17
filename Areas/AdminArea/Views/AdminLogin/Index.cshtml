@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
 @model Voyager.Models.Vm.AdminUserVM
@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <body>
-    <form action="/AdminLogin/Index" method="post"></form>
+    <form action="/Areas/AdminArea/AdminLogin/Index" method="post"></form>
 
     <div>
         @Html.LabelFor(q => q.EMail)
@@ -20,10 +20,10 @@
     </div>
     <div>
         @Html.LabelFor(q => q.Password)
-        @Html.TextBoxFor(q => q.Password)
+        @Html.PasswordFor(q => q.Password)
     </div>
     <div>
-        <input type="Su" name="name" value="Sign In" />
+        <input type="submit" name="name" value="Sign In" />
     </div>
     
 
