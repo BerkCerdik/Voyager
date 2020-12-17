@@ -55,42 +55,65 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active ">
-                        <a href="~/AdminArea/Home">
-                            <i class="nc-icon nc-bank"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/AdminArea/AdminTrip">
-                            <i class="nc-icon nc-bus-front-12"></i>
-                            <p>Trip</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/AdminArea/AdminDriver">
-                            <i class="nc-icon nc-single-02"></i>
-                            <p>Drivers</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/AdminArea/AdminPassenger">
-                            <i class="nc-icon nc-circle-10"></i>
-                            <p>Passengers</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/AdminArea/AdminComment">
-                            <i class="nc-icon nc-email-85"></i>
-                            <p>Comments</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="~/AdminArea/AdminPayment">
-                            <i class="nc-icon nc-money-coins"></i>
-                            <p>Payments</p>
-                        </a>
-                    </li>
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Dashboard"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
+
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Trips"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
+
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Drivers"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
+
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Passengers"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
+
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Comments"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
+
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Payments"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

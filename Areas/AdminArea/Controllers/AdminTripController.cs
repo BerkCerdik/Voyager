@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,12 @@ using Voyager.Models.Vm;
 namespace Voyager.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    public class AdminTripController : Controller
+    public class AdminTripController : BaseController
     {
         
             private readonly VoyagerContext _context;
 
-            public AdminTripController(VoyagerContext context)
+            public AdminTripController(VoyagerContext context, IMemoryCache memoryCache) : base(context, memoryCache)
             {
                 _context = context;
             }

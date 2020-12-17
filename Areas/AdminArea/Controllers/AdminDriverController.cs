@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Voyager.Models;
 using Voyager.Models.Orm.Context;
 using Voyager.Models.Orm.Entities;
@@ -12,12 +13,12 @@ using Voyager.Models.Vm;
 namespace Voyager.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    public class AdminDriverController : Controller
+    public class AdminDriverController : BaseController
     {
         private readonly VoyagerContext _context;
         private object db;
 
-        public AdminDriverController(VoyagerContext context)
+        public AdminDriverController(VoyagerContext context, IMemoryCache memoryCache) : base(context, memoryCache)
         {
             _context = context;
         }
