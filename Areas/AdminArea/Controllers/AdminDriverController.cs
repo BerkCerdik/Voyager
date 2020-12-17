@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Voyager.Models;
 using Voyager.Models.Orm.Context;
 using Voyager.Models.Orm.Entities;
 using Voyager.Models.Vm;
@@ -36,6 +37,7 @@ namespace Voyager.Areas.AdminArea.Controllers
             return View(drivers);
         }
 
+        [RoleControl]
         public IActionResult Add()
         {
             return View();
@@ -94,6 +96,7 @@ namespace Voyager.Areas.AdminArea.Controllers
                 driver.Password = model.Password;
                 driver.Plate = model.CarPlate;
                 _context.SaveChanges();
+                return View(model);
             }
             return RedirectToAction("Index","AdminDriver");
         }
