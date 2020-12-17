@@ -18,6 +18,7 @@ namespace Voyager.Models.Orm.Context
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Trip> Trips{ get; set; }
         public DbSet<AdminUser> AdminUsers { get; set; }
+        public DbSet<Menu> Menus { get; set; }
 
         public override int SaveChanges()
         {

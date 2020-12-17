@@ -10,8 +10,8 @@ using Voyager.Models.Orm.Context;
 namespace Voyager.Migrations
 {
     [DbContext(typeof(VoyagerContext))]
-    [Migration("20201209074740_TableInit")]
-    partial class TableInit
+    [Migration("20201217192512_DBInit")]
+    partial class DBInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,45 @@ namespace Voyager.Migrations
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("Voyager.Models.Orm.Entities.AdminUser", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("LastLoginDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Roles")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("AdminUsers");
+                });
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Comment", b =>
                 {
@@ -91,6 +130,36 @@ namespace Voyager.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Drivers");
+                });
+
+            modelBuilder.Entity("Voyager.Models.Orm.Entities.Menu", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("IconName")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Menus");
                 });
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Passenger", b =>
@@ -209,7 +278,7 @@ namespace Voyager.Migrations
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Trip", b =>
                 {
                     b.HasOne("Voyager.Models.Orm.Entities.Driver", "Driver")
-                        .WithMany("Trips")
+                        .WithMany("Trip")
                         .HasForeignKey("DriverID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -235,7 +304,7 @@ namespace Voyager.Migrations
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Driver", b =>
                 {
-                    b.Navigation("Trips");
+                    b.Navigation("Trip");
                 });
 
             modelBuilder.Entity("Voyager.Models.Orm.Entities.Passenger", b =>
