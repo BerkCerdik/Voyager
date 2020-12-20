@@ -6,39 +6,88 @@ using System.Threading.Tasks;
 using Voyager.Models.Enums;
 
 namespace Voyager.Models.Attributes
+//{
+//    public class RoleControl:ActionFilterAttribute
+//    {
+//        string pagerol = "0";
+//        public RoleControl(EnumRoles rolenumber)
+//        {
+//            pagerol = Convert.ToInt32(rolenumber).ToString();
+
+//        }
+//        public override void OnActionExecuting(ActionExecutingContext context)
+//        {
+
+//            string roles = context.HttpContext.User.Claims.ToArray()[1].Value;
+//            string[] userroles = roles.Split(";");
+//            bool yetkiVarmi = false;
+
+//            foreach (var item in userroles)
+//            {
+//                if (item== pagerol)
+//                {
+//                    yetkiVarmi = true;
+//                }
+//            }
+//            if (yetkiVarmi)
+//            {
+//                base.OnActionExecuting(context);
+//            }
+//            else
+//            {
+//                context.HttpContext.Response.Redirect("/Error/YetkisizErisim");
+//            }
+
+
+//        }
+//    }
+//}
 {
-    public class RoleControl:ActionFilterAttribute
+    public class RoleControl : ActionFilterAttribute
     {
         string pagerol = "0";
         public RoleControl(EnumRoles rolenumber)
         {
             pagerol = Convert.ToInt32(rolenumber).ToString();
-
         }
+
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-           
             string roles = context.HttpContext.User.Claims.ToArray()[1].Value;
-            string[] userroles = roles.Split(";");
-            bool yetkiVarmi = false;
 
-            foreach (var item in userroles)
+
+
+            if (roles != null)
             {
-                if (item== pagerol)
+                string[] rolenames = roles.Split(';');
+
+                bool yetkiVarmi = false;
+
+                foreach (var item in rolenames)
                 {
-                    yetkiVarmi = true;
+                    if (item == pagerol)
+                    {
+                        yetkiVarmi = true;
+                    }
                 }
+
+                if (yetkiVarmi)
+                {
+                    base.OnActionExecuting(context);
+                }
+                else
+                {
+                    context.HttpContext.Response.Redirect("/Admin/Error/UnauthorizedAccess");
+                }
+
+
             }
-            if (yetkiVarmi)
-            {
-                base.OnActionExecuting(context);
-            }
+
             else
             {
-                context.HttpContext.Response.Redirect("/Error/YetkisizErisim");
-            }
+                context.HttpContext.Response.Redirect("/Admin/Error/UnauthorizedAccess");
 
-           
+            }
         }
     }
 }

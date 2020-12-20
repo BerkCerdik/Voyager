@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Voyager.Models;
+using Voyager.Models.Enums;
 using Voyager.Models.Orm.Context;
 using Voyager.Models.Orm.Entities;
 using Voyager.Models.Vm;
@@ -38,7 +39,7 @@ namespace Voyager.Areas.AdminArea.Controllers
             return View(drivers);
         }
 
-        [RoleControl]
+        //[RoleControl(EnumRoles.AdminUserList)]
         public IActionResult Add()
         {
             return View();

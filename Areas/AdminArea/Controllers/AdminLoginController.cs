@@ -31,7 +31,7 @@ namespace Voyager.Areas.AdminArea.Controllers
         {
             if (ModelState.IsValid)
             {
-                var adminuser = _context.AdminUsers.Any(x => x.Email == model.EMail && x.Password == model.Password);
+                var adminuser = _context.AdminUsers.FirstOrDefault(x => x.Email == model.EMail && x.Password == model.Password);
 
 
                 if (adminuser != null)
@@ -39,12 +39,13 @@ namespace Voyager.Areas.AdminArea.Controllers
                     var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, model.Name),
-                    //new Claim(ClaimTypes.Role, adminuser.Roles)
+                    new Claim(ClaimTypes.Role, adminuser.Roles)
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                     await HttpContext.SignInAsync(principal);
-                    //adminuser.LastLoginDate = DateTime.Now;
+
+                    adminuser.LastLoginDate = DateTime.Now;
                     _context.SaveChanges();
 
                     return RedirectToAction("Index", "Home");
