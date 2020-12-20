@@ -22,7 +22,8 @@ namespace Voyager.Areas.AdminArea.Controllers
 
         public IActionResult Index()
         {
-            List<PassengerVM> passengers = _context.Passengers.Select(q => new PassengerVM()
+            
+            List <PassengerVM> passengers = _context.Passengers.Where(q => q.IsDeleted == false).Select(q => new PassengerVM()
             {
                 ID= q.ID,
                 Email = q.Email,
