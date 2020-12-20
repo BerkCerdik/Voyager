@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Voyager.Models.Orm.Context;
 using Voyager.Models.Vm;
 
+
 namespace Voyager.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
@@ -44,7 +45,7 @@ namespace Voyager.Areas.AdminArea.Controllers
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                     await HttpContext.SignInAsync(principal);
                     //adminuser.LastLoginDate = DateTime.Now;
-                    //_context.SaveChanges();
+                    _context.SaveChanges();
 
                     return RedirectToAction("Index", "Home");
                 }

@@ -49,9 +49,13 @@ namespace Voyager
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseResponseCaching();
 
+            app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
