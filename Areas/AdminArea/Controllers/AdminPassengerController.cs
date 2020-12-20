@@ -43,9 +43,12 @@ namespace Voyager.Areas.AdminArea.Controllers
             model.Name = passenger.Name;
             model.Surname = passenger.Surname;
             model.Email = passenger.Email;
+            model.Password = passenger.Password;
 
             return View(model);
         }
+
+
         public IActionResult Edit(int ID)
         {
             Passenger passenger = _context.Passengers.FirstOrDefault(x => x.ID == ID);
@@ -64,14 +67,32 @@ namespace Voyager.Areas.AdminArea.Controllers
         {
 
             Passenger passenger = _context.Passengers.FirstOrDefault(q => q.ID == model.ID);
-            passenger.Email = model.Email;
+
+            if (ModelState.IsValid)
+            {
+                passenger.Name = model.Name;
+                passenger.Surname = model.Surname;
+                passenger.Email = model.Email;
+                passenger.Password = model.Password;
+                _context.SaveChanges();
+                return View(model);
+            }
+            return RedirectToAction("Index", "AdminPassenger");
+        }
+
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Passenger passenger = _context.Passengers.FirstOrDefault(x => x.ID == id);
+
+            passenger.IsDeleted = true;
 
             _context.SaveChanges();
 
-            return View(model);
+            return RedirectToAction("Index");
         }
 
-        
 
 
     }

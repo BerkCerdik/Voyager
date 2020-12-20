@@ -21,7 +21,7 @@
                                 Name
                             </th>
                             <th>
-                                Country
+                                Surname
                             </th>
                             <th>
                                 City
@@ -34,6 +34,9 @@
                             </th>
                             <th>
                                 Edit
+                            </th>
+                            <th>
+                                Delete
                             </th>
                             </thead>
                             <tbody>
@@ -53,20 +56,24 @@
                                             @item.Email
                                         </td>
                                         <td>
-                                            <a href="/AdminPassenger/PassengerDetail/@item.ID">
+                                            <a href="./AdminPassenger/PassengerDetail/@item.ID">
                                                 <button class="btn btn-outline-default btn-block">
                                                     Detail
                                                 </button>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="/AdminPassenger/Edit/@item.ID">
-                                                <button class="btn btn-outline-warning">
+                                            <a href="./AdminPassenger/Edit/@item.ID">
+                                                <button class="btn btn-outline-warning btn-block">
                                                     Edit
                                                 </button>
                                             </a>
                                         </td>
-                                        @*delete*@
+                                        <td>
+                                            <button id="@item.ID" class="btn btn-outline-danger btn-block delete">
+                                                Delete
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
@@ -78,3 +85,23 @@
 
     </div>
 </div>
+
+
+<script>
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/AdminArea/AdminPassenger/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                // alert("Deleted successfully!!!");
+                // $("#" + id).fadeOut();
+                window.location.href = "/AdminArea/AdminPassenger"
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
+</script>

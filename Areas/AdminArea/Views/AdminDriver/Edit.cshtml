@@ -50,6 +50,7 @@
                 @Html.TextBoxFor(q => q.CarPlate, new { @class = "form-control" })
                 <span asp-validation-for="CarPlate" class="text-danger"></span>
             </div>
+            @Html.HiddenFor(q=>q.ID)
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-primary" />
             </div>
