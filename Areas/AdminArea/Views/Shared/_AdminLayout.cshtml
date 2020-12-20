@@ -114,6 +114,16 @@
                             </li>
                         }
                     }
+
+                    @foreach (var item in ViewBag.menus)
+                    {
+                        if (item.Name.Contains("Admin"))
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@item.Path" aria-expanded="false"><i class="@item.IconName"></i><span class="hide-menu">@item.Name</span></a>
+                            </li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

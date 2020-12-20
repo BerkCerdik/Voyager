@@ -44,18 +44,21 @@ namespace Voyager.Areas.AdminArea.Controllers
 
         public IActionResult TripDetails(int id)
         {
-            Trip trip = _context.Trips.FirstOrDefault(x => x.ID == id);
-            TripVM model = new TripVM();
-            model.PassengerName = trip.Passenger.Name;
-            model.PassengerLastname = trip.Passenger.Surname;
-            model.DriverName = trip.Driver.Name;
-            model.DriverLastname = trip.Driver.Surname;
-            model.Price = trip.Payment.Price;
-            model.DeparturePoint = trip.DeparturePoint;
-            model.ArrivalPoint = trip.ArrivalPoint;
+            TripVM trip = _context.Trips.Include(a => a.Passenger).Include(b => b.Driver).Include(c => c.Payment ).Select(q => new TripVM()
+            {
+                ID = q.ID,
+                ArrivalPoint = q.ArrivalPoint,
+                DeparturePoint = q.DeparturePoint,
+                PassengerName = q.Passenger.Name,
+                PassengerLastname = q.Passenger.Surname,
+                DriverName = q.Driver.Name,
+                DriverLastname = q.Driver.Surname,
+                Price = q.Payment.Price
 
 
-            return View(model);
+            }).FirstOrDefault(x => x.ID == id);
+
+            return View(trip);
         }
     }
 }

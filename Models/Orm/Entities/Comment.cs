@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Voyager.Models.Orm.Entities
 {
@@ -13,8 +14,7 @@ namespace Voyager.Models.Orm.Entities
 
         [ForeignKey("TripID")]
         public Trip Trip { get; set; }
- 
 
-
+      
     }
 }
