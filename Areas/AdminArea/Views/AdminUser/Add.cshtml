@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+@model Voyager.Models.Vm.AdminUserVM
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Add Driver</h5>
+            </div>
+            <div class="card-body">
+                <form action="/AdminArea/AdminDriver/Add" method="post">
+                    <div class="row">
+                        <div class="col-md-6 pr-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.Name, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 pl-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.Surname, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.Surname, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 pr-1">
+                            <div class="form-group">
+                                @Html.LabelFor(q => q.EMail, new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(q => q.EMail, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-4 pr-1">
+                            <div>
+                                @Html.LabelFor(q => q.Password, new { @class = "bmd-label-floating" })
+                                @Html.PasswordFor(q => q.Password, new { @class = "form-control" })
+
+                            </div>
+                            <div>
+                                @Html.LabelFor(q => q.ConfirmPassword)
+                                @Html.PasswordFor(q => q.ConfirmPassword, new { @placeholder = "Enter confirm password", @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>About Me</label>
+                                <textarea class="form-control textarea">Hakkında açıklama yaz</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Add Driver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model List<Voyager.Models.Vm.AdminUserVM>
+
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header">
+            <h4 class="card-title"> Driver Control Panel</h4>
+            <a class="card-category" href="/AdminArea/AdminUser/Add"> <button class="btn btn-primary btn-round">Add Admin User</button></a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Surname
+                    </th>
+                    <th>
+                        Password
+                    </th>
+                    <th>
+                        Roles
+                    </th>
+                    <th>
+                        View
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Surname
+                                </td>
+                                <td>
+                                    @item.Password
+                                </td>
+                                <td>
+                                    @item.Roles
+                                </td>
+                                <td>
+                                    <a href="./AdminUser/Detail/@item.ID">
+                                        <button class="btn btn-outline-default btn-block">
+                                            Detail
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="./AdminUser/Edit/@item.ID">
+                                        <button class="btn btn-outline-warning btn-block">
+                                            Edit
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+
+                                    <button id="@item.ID" class="btn btn-outline-danger btn-block delete">
+                                        Delete
+                                    </button>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Page specific script -->
+<script>
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/AdminArea/AdminUser/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                // alert("Deleted successfully!!!");
+                // $("#" + id).fadeOut();
+                window.location.href = "/AdminArea/AdminUser"
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
+</script>

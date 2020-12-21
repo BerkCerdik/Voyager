@@ -20,5 +20,6 @@ namespace Voyager.Models.Vm
         [Compare("Password",ErrorMessage ="Şifreler Uyuşmuyor!")]
         [Display(Name="Şifre Tekrar")]
         public string ConfirmPassword { get; set; }
+        public string Roles { get; set; }
     }
 }

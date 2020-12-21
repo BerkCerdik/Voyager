@@ -29,7 +29,6 @@
     <Folder Include="Areas\AdminArea\Data\" />
     <Folder Include="Areas\AdminArea\Models\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Views\" />
     <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 

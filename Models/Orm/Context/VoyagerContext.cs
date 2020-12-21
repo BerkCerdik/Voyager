@@ -46,6 +46,8 @@ namespace Voyager.Models.Orm.Context
             return base.SaveChanges();
         }
 
+        public DbSet<Voyager.Models.Vm.AdminUserVM> AdminUserVM { get; set; }
+
 
 
 

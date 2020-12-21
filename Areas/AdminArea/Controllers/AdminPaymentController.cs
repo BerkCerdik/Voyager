@@ -22,7 +22,7 @@ namespace Voyager.Areas.AdminArea.Controllers
         }
             public IActionResult Index()
         {
-            List<PaymentVM> payments = _context.Payments.Include(a => a.Trips).Select(q => new PaymentVM()
+            List<PaymentVM> payments = _context.Payments.Include(a => a.Trips).ThenInclude(x=>x.Payment).Select(q => new PaymentVM()
             {
                 Price=q.Price,
                 Trips=q.Trips
