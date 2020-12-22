@@ -11,7 +11,7 @@ using Voyager.Models.Orm.Entities;
 
 namespace Voyager.Areas.AdminArea.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("AdminArea")]
     public class BaseController : Controller
     {

@@ -9,10 +9,10 @@
     <div class="col-md-8">
         <div class="card card-user">
             <div class="card-header">
-                <h5 class="card-title">Add Driver</h5>
+                <h5 class="card-title">Add Admin</h5>
             </div>
             <div class="card-body">
-                <form action="/AdminArea/AdminDriver/Add" method="post">
+                <form action="/AdminArea/AdminUser/Add" method="post">
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        
+
                         <div class="col-md-4 pr-1">
                             <div>
                                 @Html.LabelFor(q => q.Password, new { @class = "bmd-label-floating" })
@@ -47,6 +47,17 @@
                                 @Html.LabelFor(q => q.ConfirmPassword)
                                 @Html.PasswordFor(q => q.ConfirmPassword, new { @placeholder = "Enter confirm password", @class = "form-control" })
                             </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4 pr-2">
+                            <div>
+                                @Html.LabelFor(q => q.Roles, new { @class = "bmd-label-floating" })
+                                @Html.PasswordFor(q => q.Roles, new { @class = "form-control" })
+
+                            </div>                           
                         </div>
 
                     </div>
