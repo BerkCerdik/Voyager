@@ -39,7 +39,7 @@ namespace Voyager.Areas.AdminArea.Controllers
                     var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, model.Name),
-                    //new Claim(ClaimTypes.Role,model.Roles)
+                    new Claim(ClaimTypes.Role,model.Roles)
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
