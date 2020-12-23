@@ -86,22 +86,24 @@
 
 </div>
 
-<!-- Page specific script -->
-<script>
-    $(document).on("click", ".delete", function () {
-        let id = $(this).attr("id");
-        $.ajax({
-            url: "/AdminArea/AdminDriver/Delete",
-            type: "POST",
-            data: { id: id },
-            success: function (msg) {
-                // alert("Deleted successfully!!!");
-                // $("#" + id).fadeOut();
-                window.location.href = "/AdminArea/AdminDriver"
-            },
-            error: function (err) {
-                alert("Failed!");
-            }
+
+    <!-- Page specific script -->
+    <script>
+        $(document).on("click", ".delete", function () {
+            let id = $(this).attr("id");
+            $.ajax({
+                url: "/AdminArea/AdminDriver/Delete",
+                type: "POST",
+                data: { id: id },
+                success: function (msg) {
+                    // alert("Deleted successfully!!!");
+                    // $("#" + id).fadeOut();
+                    window.location.href = "/AdminArea/AdminDriver"
+                },
+                error: function (err) {
+                    alert("Failed!");
+                }
+            })
         })
-    })
-</script>
+    </script>
+

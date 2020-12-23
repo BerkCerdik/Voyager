@@ -27,7 +27,7 @@ namespace Voyager.Areas.AdminArea.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(AdminUserVM model)
+        public async Task<IActionResult> Index(AdminLoginVM model)
         {
             if (ModelState.IsValid)
             {
@@ -38,8 +38,8 @@ namespace Voyager.Areas.AdminArea.Controllers
                 {
                     var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, model.Name),
-                    new Claim(ClaimTypes.Role,model.Roles)
+                    new Claim(ClaimTypes.Name, model.EMail),
+                    //new Claim(ClaimTypes.Role,model.Roles)
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
@@ -48,7 +48,7 @@ namespace Voyager.Areas.AdminArea.Controllers
                     adminuser.LastLoginDate = DateTime.Now;
                     _context.SaveChanges();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Home", "AdminArea");
                 }
                 else
                 {
