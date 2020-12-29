@@ -1,0 +1,51 @@
+﻿@model Voyager.Models.Vm.CommentVM
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Leave a Comment</h1>
+
+<h4>CommentVM</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form action="/Comment/Add" method="post" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @Html.LabelFor(q => q.PassengerName, new { @class = "bmd-label-floating , control-label " })
+                @Html.TextBoxFor(q => q.PassengerName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(q => q.PassengerLastname, new { @class = "bmd-label-floating , control-label " })
+                @Html.TextBoxFor(q => q.PassengerLastname, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(q => q.DriverName, new { @class = "bmd-label-floating , control-label " })
+                @Html.TextBoxFor(q => q.DriverName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(q => q.DriverLastname, new { @class = "bmd-label-floating , control-label " })
+                @Html.TextBoxFor(q => q.DriverLastname, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(q => q.Content, new { @class = "bmd-label-floating , control-label " })
+                @Html.TextBoxFor(q => q.Content, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(q => q.Point, new { @class = "bmd-label-floating , control-label " })
+                @Html.TextBoxFor(q => q.Point, new { @class = "form-control" })
+                @*Nasıl bir puan verme sistemi olabilir.*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Leave a Comment" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"  href="/Comment">Back to List</a>
+</div>
+
