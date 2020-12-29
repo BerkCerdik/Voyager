@@ -21,7 +21,6 @@ namespace Voyager.Controllers
         public IActionResult Index()
         {
             List<CommentVM> comments = _context.Comments.Include(a => a.Trip).ThenInclude(Trip => Trip.Passenger).Include(a => a.Trip).ThenInclude(Trip => Trip.Driver).Select(q => new CommentVM()
-
             {
                 ID = q.ID,
                 TripID = q.TripID,
@@ -37,8 +36,26 @@ namespace Voyager.Controllers
             return View(comments);
         }
 
-        public IActionResult Edit()
+        public IActionResult Add()
         {
+            return View();
+        }
+
+
+        //Butona tıkladığımda tripId alacak ve onun comment'ini ekleyecek. ???
+        [HttpPost]
+        public IActionResult Add(CommentVM model)
+        {            
+            if (ModelState.IsValid)
+            {
+                Comment comment = new Comment();
+                comment.Content = model.Content;
+                comment.Point = model.Point;
+                _context.Comments.Add(comment);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Comment");
+            }
+
             return View();
         }
 
