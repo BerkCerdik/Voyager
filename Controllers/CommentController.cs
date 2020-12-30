@@ -36,19 +36,39 @@ namespace Voyager.Controllers
             return View(comments);
         }
 
-        public IActionResult Add()
+        //Butona tıkladığımda tripId alacak ve onun comment'ini ekleyecek. ???
+        public IActionResult Add(int id)
         {
-            return View();
+            Comment comment = new Comment();
+
+            comment.TripID = id;
+            comment.Point = 0;
+            comment.Content = " ";            
+
+            _context.SaveChanges();
+            return RedirectToAction("Edit", "Comment");
+
+            //id göndermem lazım. Edit'e
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Comment comment = _context.Comments.FirstOrDefault(x => x.TripID == id);
+            CommentVM model = new CommentVM();
+            model.Content = comment.Content;
+            model.Point = comment.Point;
+            return View(model);
+            //58 Null 
         }
 
 
-        //Butona tıkladığımda tripId alacak ve onun comment'ini ekleyecek. ???
         [HttpPost]
-        public IActionResult Add(CommentVM model)
-        {            
+        public IActionResult Edit(CommentVM model)
+        {
+            Comment comment= _context.Comments.FirstOrDefault(x => x.ID == model.ID);
+
             if (ModelState.IsValid)
             {
-                Comment comment = new Comment();
                 comment.Content = model.Content;
                 comment.Point = model.Point;
                 _context.Comments.Add(comment);
