@@ -6,50 +6,56 @@
 
 @model List<Voyager.Models.Vm.TripVM>
 
+@await Html.PartialAsync("Partial/Banner")
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Cloumn Number - ID </th>
-            <th scope="col">Driver Name</th>
-            <th scope="col">Driver Last Name</th>
-            @*<th scope="col">Date</th>*@
-            <th scope="col">Departure Point</th>
-            <th scope="col">Arrival Point</th>
-            <th scope="col">Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="container">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>
-                    @item.ID
-                </td>
-                <td>
-                    @item.DriverName 
-                </td>
-                <td>
-                    @item.DriverLastname
-                </td>
-                <td>
-                    @item.DeparturePoint
-                </td>
-                <td>
-                    @item.ArrivalPoint
-                </td>
-                <td>
-                    @item.Price
-                </td>
-                <td>
-                    <a href="/Comment/Add/@item.ID">
-                        <button class="btn btn-outline-default btn-block">
-                            Leave a Comment
-                        </button>
-                    </a>
-                </td>
-                @*delete*@
+                <th scope="col">Cloumn Number - ID </th>
+                <th scope="col">Driver Name</th>
+                <th scope="col">Driver Last Name</th>
+                @*<th scope="col">Date</th>*@
+                <th scope="col">Departure Point</th>
+                <th scope="col">Arrival Point</th>
+                <th scope="col">Price</th>
+                <th scope="col">Comment</th>
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.ID
+                    </td>
+                    <td>
+                        @item.DriverName
+                    </td>
+                    <td>
+                        @item.DriverLastname
+                    </td>
+                    <td>
+                        @item.DeparturePoint
+                    </td>
+                    <td>
+                        @item.ArrivalPoint
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        <a href="/Comment/Add/@item.ID">
+                            <button class="btn btn-outline-primary btn-block">
+                                Leave a Comment
+                            </button>
+                        </a>
+                    </td>
+                    @*delete*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

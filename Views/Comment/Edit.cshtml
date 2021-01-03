@@ -13,7 +13,7 @@
     <div class="col-md-4">
         <form action="/Comment/Add" method="post" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(q => q.PassengerName, new { @class = "bmd-label-floating , control-label " })
                 @Html.TextBoxFor(q => q.PassengerName, new { @class = "form-control" })
             </div>
@@ -28,7 +28,7 @@
             <div class="form-group">
                 @Html.LabelFor(q => q.DriverLastname, new { @class = "bmd-label-floating , control-label " })
                 @Html.TextBoxFor(q => q.DriverLastname, new { @class = "form-control" })
-            </div>
+            </div>*@
             <div class="form-group">
                 @Html.LabelFor(q => q.Content, new { @class = "bmd-label-floating , control-label " })
                 @Html.TextAreaFor(model => model.Content, new { @id = "editor1", @class = "form-control" })
