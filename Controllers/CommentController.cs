@@ -36,7 +36,7 @@ namespace Voyager.Controllers
             return View(comments);
         }
 
-        //Butona tıkladığımda tripId alacak ve onun comment'ini ekleyecek. ???
+      
         public IActionResult Add(int id)
         {
             Comment comment = new Comment();
@@ -46,9 +46,9 @@ namespace Voyager.Controllers
             comment.Content = " ";            
 
             _context.SaveChanges();
-            return RedirectToAction("Edit", "Comment");
+            return RedirectToAction("Edit", "Comment", new {id = id });
 
-            //id göndermem lazım. Edit'e
+          
         }
 
         public IActionResult Edit(int id)
@@ -58,7 +58,6 @@ namespace Voyager.Controllers
             model.Content = comment.Content;
             model.Point = comment.Point;
             return View(model);
-            //58 Null 
         }
 
 
