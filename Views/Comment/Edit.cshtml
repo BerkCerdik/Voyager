@@ -10,27 +10,27 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form action="/Comment/Edit" method="post" >
+        <form action="/Comment/Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @*<div class="form-group">
-                @Html.LabelFor(q => q.PassengerName, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextBoxFor(q => q.PassengerName, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(q => q.PassengerLastname, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextBoxFor(q => q.PassengerLastname, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(q => q.DriverName, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextBoxFor(q => q.DriverName, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(q => q.DriverLastname, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextBoxFor(q => q.DriverLastname, new { @class = "form-control" })
-            </div>*@
+                    @Html.LabelFor(q => q.PassengerName, new { @class = "bmd-label-floating , control-label " })
+                    @Html.TextBoxFor(q => q.PassengerName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(q => q.PassengerLastname, new { @class = "bmd-label-floating , control-label " })
+                    @Html.TextBoxFor(q => q.PassengerLastname, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(q => q.DriverName, new { @class = "bmd-label-floating , control-label " })
+                    @Html.TextBoxFor(q => q.DriverName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(q => q.DriverLastname, new { @class = "bmd-label-floating , control-label " })
+                    @Html.TextBoxFor(q => q.DriverLastname, new { @class = "form-control" })
+                </div>*@
             <div class="form-group">
                 @Html.LabelFor(q => q.Content, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextAreaFor(model => model.Content, new { @id = "editor1", @class = "form-control" })
+                @Html.TextAreaFor(model => model.Content, new { @id = "editor", @class = "form-control" })
                 @*@Html.TextBoxFor(q => q.Content, new { @class = "form-control" })*@
             </div>
             <div class="form-group">
@@ -46,11 +46,18 @@
 </div>
 
 <div>
-    <a asp-action="Index"  href="/Comment">Back to List</a>
+    <a asp-action="Index" href="/Comment">Back to List</a>
 </div>
 
 
 
 <script>
-CKEDITOR.replace('editor1');
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 </script>
