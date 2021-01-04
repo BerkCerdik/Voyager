@@ -70,7 +70,7 @@ namespace Voyager.Controllers
             {
                 comment.Content = model.Content;
                 comment.Point = model.Point;
-                _context.Comments.Add(comment);
+                //_context.Comments.Add(comment);
                 _context.SaveChanges();
                 return RedirectToAction("Index", "Comment");
             }
