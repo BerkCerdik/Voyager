@@ -43,10 +43,11 @@ namespace Voyager.Controllers
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                     await HttpContext.SignInAsync(principal);
 
-                    /*passenger.LastLoginDate = DateTime.Now*/;
+                    /*passenger.LastLoginDate = DateTime.Now*/
+
                     _context.SaveChanges();
 
-                    return RedirectToAction("Home", "AdminArea");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -63,7 +64,7 @@ namespace Voyager.Controllers
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Add()
@@ -72,7 +73,7 @@ namespace Voyager.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(PassengerLoginVM model)
+        public IActionResult Add(PassengerRegisterVM model)
         {
             if (ModelState.IsValid)
             {
