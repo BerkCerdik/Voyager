@@ -18,17 +18,14 @@
             <div class="form-group">
                 @Html.LabelFor(q => q.Email, new { @class = "bmd-label-floating" })
                 @Html.TextBoxFor(q => q.Email, new { @class = "form-control" })
-                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 @Html.LabelFor(q => q.Name, new { @class = "bmd-label-floating" })
                 @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
-                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 @Html.LabelFor(q => q.Surname, new { @class = "bmd-label-floating" })
                 @Html.TextBoxFor(q => q.Surname, new { @class = "form-control" })
-                <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 @Html.LabelFor(q => q.Password, new { @class = "bmd-label-floating" })
@@ -38,17 +35,15 @@
             <div class="form-group">
                 @Html.LabelFor(q => q.Confirmpassword)
                 @Html.PasswordFor(q => q.Confirmpassword, new { @placeholder = "Enter confirm password", @class = "form-control" })
-                <span asp-validation-for="Re-Password" class="text-danger"></span>
+                @Html.ValidationMessageFor(q => q.Confirmpassword)
             </div>
             <div class="form-group">
                 @Html.LabelFor(q => q.DriverLicense, new { @class = "bmd-label-floating" })
                 @Html.TextBoxFor(q => q.DriverLicense, new { @type = "date", @name = "driverlicense", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
-                <span asp-validation-for="DriverLicense" class="text-danger"></span>
             </div>
             <div class="form-group">
                 @Html.LabelFor(q => q.CarPlate, new { @class = "bmd-label-floating" })
                 @Html.TextBoxFor(q => q.CarPlate, new { @class = "form-control" })
-                <span asp-validation-for="CarPlate" class="text-danger"></span>
             </div>
             @Html.HiddenFor(q=>q.ID)
             <div class="form-group">

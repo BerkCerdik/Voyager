@@ -9,6 +9,7 @@ namespace Voyager.Models.Vm
     public class AdminUserVM
     {
         public int ID { get; set; }
+
         [Required(ErrorMessage="E-Mail alanı boş geçilemez!")]
         public string EMail { get; set; }
         public string Name { get; set; }
@@ -16,6 +17,8 @@ namespace Voyager.Models.Vm
 
         [Required(ErrorMessage = "Şifre alanı boş geçilemez!")]
         public string Password { get; set; }
+
+
         [Required(ErrorMessage = "Şifre tekrar boş geçilemez!")]
         [Compare("Password",ErrorMessage ="Şifreler Uyuşmuyor!")]
         [Display(Name="Şifre Tekrar")]

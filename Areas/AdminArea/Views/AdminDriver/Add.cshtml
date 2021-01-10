@@ -20,12 +20,14 @@
                             <div class="form-group">
                                 @Html.LabelFor(q => q.Name, new { @class = "bmd-label-floating" })
                                 @Html.TextBoxFor(q => q.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.Name)
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 @Html.LabelFor(q => q.Surname, new { @class = "bmd-label-floating" })
                                 @Html.TextBoxFor(q => q.Surname, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.Surname)
                             </div>
                         </div>
                     </div>
@@ -34,6 +36,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(q => q.Email, new { @class = "bmd-label-floating" })
                                 @Html.TextBoxFor(q => q.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.Email)
                             </div>
                         </div>
                     </div>
@@ -42,23 +45,27 @@
                             <div class="form-group">
                                 @Html.LabelFor(q => q.DriverLicense, new { @class = "bmd-label-floating" })
                                 @Html.TextBoxFor(q => q.DriverLicense, new { @type = "date", @name = "driverlicense", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+                                @Html.ValidationMessageFor(q => q.DriverLicense)
                             </div>
                         </div>
                         <div class="col-md-4 pr-1">
                             <div class="form-group">
                                 @Html.LabelFor(q => q.CarPlate, new { @class = "bmd-label-floating" })
                                 @Html.TextBoxFor(q => q.CarPlate, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.CarPlate)
                             </div>
                         </div>
                         <div class="col-md-4 pr-1">
                             <div>
                                 @Html.LabelFor(q => q.Password, new { @class = "bmd-label-floating" })
                                 @Html.PasswordFor(q => q.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.Password)
 
                             </div>
                             <div>
                                 @Html.LabelFor(q => q.Confirmpassword)
                                 @Html.PasswordFor(q => q.Confirmpassword, new { @placeholder = "Enter confirm password", @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.Confirmpassword)
                             </div>
                         </div>
 

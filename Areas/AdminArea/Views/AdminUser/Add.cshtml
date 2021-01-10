@@ -32,6 +32,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(q => q.EMail, new { @class = "bmd-label-floating" })
                                 @Html.TextBoxFor(q => q.EMail, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.EMail)
                             </div>
                         </div>
                     </div>
@@ -41,11 +42,13 @@
                             <div>
                                 @Html.LabelFor(q => q.Password, new { @class = "bmd-label-floating" })
                                 @Html.PasswordFor(q => q.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.Password)
 
                             </div>
                             <div>
                                 @Html.LabelFor(q => q.ConfirmPassword)
                                 @Html.PasswordFor(q => q.ConfirmPassword, new { @placeholder = "Enter confirm password", @class = "form-control" })
+                                @Html.ValidationMessageFor(q => q.ConfirmPassword)
                             </div>
                         </div>
 

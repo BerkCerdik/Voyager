@@ -38,12 +38,13 @@
                 @Html.LabelFor(q => q.ConfirmPassword, new { @class = "bmd-label-floating" })
                 @Html.PasswordFor(q => q.ConfirmPassword, new { @class = "form-control" })
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                @Html.ValidationMessageFor(q => q.ConfirmPassword)
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(q => q.Roles, new { @class = "bmd-label-floating" })
                 @Html.TextBoxFor(q => q.Roles, new { @class = "form-control" })
                 <span asp-validation-for="Roles" class="text-danger"></span>
-            </div>
+            </div>*@
             @Html.HiddenFor(q => q.ID)
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
