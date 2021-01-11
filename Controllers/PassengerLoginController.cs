@@ -36,8 +36,8 @@ namespace Voyager.Controllers
                 {
                     var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, model.Email),
-                    //new Claim(ClaimTypes.Role,model.Roles)
+                    //new Claim(ClaimTypes.Email, model.Email),
+                    new Claim(ClaimTypes.Name,passenger.ID.ToString())
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);

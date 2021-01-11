@@ -3,10 +3,10 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model HomeVM
 
 @await Html.PartialAsync("Partial/Banner")
-@await Html.PartialAsync("Partial/About")
+@await Html.PartialAsync("Partial/About",Model)
 @await Html.PartialAsync("Partial/Services")
 @await Html.PartialAsync("Partial/Tarrifs")
 @await Html.PartialAsync("Partial/Stats")

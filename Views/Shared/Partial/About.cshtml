@@ -1,4 +1,6 @@
-﻿ <!-- about -->
+﻿@model HomeVM
+ <!-- about -->
+
 <section class="about py-sm-5 py-4" id="about">
     <div class="container py-lg-5">
         <div class="row about-grids">
@@ -10,25 +12,29 @@
             </div>
             <div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
                 <div class="padding">
-                    <form action="#" method="post">
+                  
                         <h5 class="mb-3">Book A Cab</h5>
                         <div class="form-style-agile">
-                            <input placeholder="Name" name="name" type="text" required="">
-                            <input placeholder="Phone Number" name="number" type="text" required="">
-                            <input placeholder="Source(From)" type="text" required="">
-                            <input placeholder="Destination(To)" type="text" required="">
-                            <select>
-                                <option value="0">Choose Vehicle</option>
-                                <option value="1">Vehicle1</option>
-                                <option value="2">Vehicle2</option>
-                                <option value="3">Vehicle3</option>
-                                <option value="3">Vehicle4</option>
-                                <option value="3">Vehicle5</option>
-                            </select>
-                            <!--<input placeholder="Password" name="password" type="password" required=""> -->
-                            <button class="book-btn btn">Book Now</button>
+                            
+                            <form action="/Home/Booking" method="post">
+                                @Html.TextBoxFor(q => q.Source, new { @placeholder = "Source(From)" })
+                                @Html.TextBoxFor(q => q.Destination, new { @placeholder = "Destination(To)" })
+
+                                <select name="DriverID">
+                                    @foreach (var item in Model.Drivers)
+                                    {
+                                        <option value="@item.ID">@item.Name</option>
+                                    }
+
+                                </select>
+                                <button type="submit" class="book-btn btn">Book Now</button>
+
+                            </form>
+
+                            
+
                         </div>
-                    </form>
+                    
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mt-4">

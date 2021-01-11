@@ -100,7 +100,7 @@ namespace Voyager.Areas.AdminArea.Controllers
                 _context.SaveChanges();
                 return View(model);
             }
-            return RedirectToAction("/AdminArea/AdminDriver/Index/");
+            return Redirect("/AdminArea/AdminDriver/Index/");
             //return RedirectToAction("Index","AdminDriver");
         }
 
