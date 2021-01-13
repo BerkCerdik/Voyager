@@ -43,8 +43,8 @@ namespace Voyager.Controllers
 
             comment.TripID = id;
             comment.Point = 0;
-            comment.Content = " ";            
-
+            comment.Content = " ";
+            _context.Comments.Add(comment);
             _context.SaveChanges();
             return RedirectToAction("Edit", "Comment", new {id = id });
 
@@ -64,7 +64,7 @@ namespace Voyager.Controllers
         [HttpPost]
         public IActionResult Edit(CommentVM model)
         {
-            Comment comment= _context.Comments.FirstOrDefault(x => x.ID == model.ID);
+            Comment comment= _context.Comments.FirstOrDefault(x => x.TripID == model.ID);
 
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace Voyager.Controllers
                 comment.Point = model.Point;
                 //_context.Comments.Add(comment);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "Comment");
+                return RedirectToAction("Index", "Trip");
             }
 
             return View();

@@ -10,46 +10,74 @@
 <h1>Leave a Comment</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form action="/Comment/Edit" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                    @Html.LabelFor(q => q.PassengerName, new { @class = "bmd-label-floating , control-label " })
-                    @Html.TextBoxFor(q => q.PassengerName, new { @class = "form-control" })
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <form action="/Comment/Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(q => q.Content, new { @class = "bmd-label-floating , control-label " })
+                    @Html.TextAreaFor(model => model.Content, new { @id = "editor", @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(q => q.PassengerLastname, new { @class = "bmd-label-floating , control-label " })
-                    @Html.TextBoxFor(q => q.PassengerLastname, new { @class = "form-control" })
+                    @Html.LabelFor(q => q.Point, new { @class = "bmd-label-floating , control-label " })
+                    @*@Html.TextBoxFor(q => q.Point, new { @class = "form-control" })*@
+
+
+                    @if (Model.Point == 0)
+                    {
+                        <i class="fa fa-star-o" id="@Model.TripID" value="1"></i>
+                        <i class="fa fa-star-o" id="@Model.TripID" value="2"></i>
+                        <i class="fa fa-star-o" id="@Model.TripID" value="3"></i>
+                        <i class="fa fa-star-o" id="@Model.TripID" value="4"></i>
+                        <i class="fa fa-star-o" id="@Model.TripID" value="5"></i>
+
+                        <li><strong>Your Point:</strong>-</li>
+
+                    }
+
+                    else
+                    {
+
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            if (i <= Model.Point)
+                            {
+                                <i class="fa fa-star" id="@Model.TripID" value="@i"></i>
+
+                            }
+
+                            else
+                            {
+                                <i class="fa fa-star-o" id="@Model.TripID" value="@i"></i>
+
+                            }
+                        }
+
+                    }
+
+
+
+
+
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(q => q.DriverName, new { @class = "bmd-label-floating , control-label " })
-                    @Html.TextBoxFor(q => q.DriverName, new { @class = "form-control" })
+                    @Html.HiddenFor( q => q.ID)
+                    <input type="submit" value="Leave a Comment" class="btn btn-primary" />
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(q => q.DriverLastname, new { @class = "bmd-label-floating , control-label " })
-                    @Html.TextBoxFor(q => q.DriverLastname, new { @class = "form-control" })
-                </div>*@
-            <div class="form-group">
-                @Html.LabelFor(q => q.Content, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextAreaFor(model => model.Content, new { @id = "editor", @class = "form-control" })
-                @*@Html.TextBoxFor(q => q.Content, new { @class = "form-control" })*@
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(q => q.Point, new { @class = "bmd-label-floating , control-label " })
-                @Html.TextBoxFor(q => q.Point, new { @class = "form-control" })
-                @*Nasıl bir puan verme sistemi olabilir.*@
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Leave a Comment" class="btn btn-primary" />
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+
+    <div>
+        <a asp-action="Index" href="/Comment">Back to List</a>
+    </div>
+
 </div>
 
-<div>
-    <a asp-action="Index" href="/Comment">Back to List</a>
-</div>
 
 
 
@@ -62,4 +90,59 @@
         .catch(error => {
             console.error(error);
         });
+</script>
+
+<script>
+
+$(".fa").click(function () {
+        var point = $(this).attr("value");
+        var id = $(this).attr("id");
+        @Model.Point = point;
+
+        console.log(point);
+
+        $.ajax({
+            url: "/Comment/Edit",
+            type: "post",
+            data: { model : @Model},
+            success: function (average) {
+                console.log(average);
+                //for (var i = 5; i >= 1; i--) {
+
+                //    if (i <= average) {
+                //        $(this).removeClass('fa-star-o').addClass('fa-star');
+                //    }
+
+                //    else {
+                //        $(this).nextAll(".fa").removeClass('fa-star-o').addClass('fa-star');
+
+                //    }
+                //}
+
+                var modek-l = @Model.ID;
+                window.location.href = "/Comment/Index";
+
+            },
+
+        })
+})
+
+                $(".fa").mouseover(function () {
+                $(this).removeClass('fa-star-o').addClass('fa-star');
+                $(this).prevAll(".fa").removeClass('fa-star-o').addClass('fa-star');
+
+                })
+
+
+
+
+    $(".fa").mouseleave(function () {
+        //kaç adet dolu yıldız olduğunu bulalım. Daha sonra o yıldız kadar fa class ını ayarlayalım. id si starts olan li nin içerisinde fa-start olan kaç eleman var?
+
+
+        $(this).removeClass('fa-star-o').addClass('fa-star');
+        $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
+    })
+
 </script>

@@ -37,7 +37,9 @@ namespace Voyager.Controllers
                     var claims = new List<Claim>
                 {
                     //new Claim(ClaimTypes.Email, model.Email),
-                    new Claim(ClaimTypes.Name,passenger.ID.ToString())
+                    new Claim(ClaimTypes.Sid,passenger.ID.ToString()),
+                    new Claim(ClaimTypes.Name,passenger.Name),
+                    new Claim(ClaimTypes.UserData , "User")
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
@@ -46,6 +48,21 @@ namespace Voyager.Controllers
                     /*passenger.LastLoginDate = DateTime.Now*/
 
                     _context.SaveChanges();
+
+                    //TempData["UserID"] = HttpContext.User.Claims.ToArray()[0].Value;
+                    //TempData["UserName"] = HttpContext.User.Claims.ToArray()[1].Value;
+
+                    if (HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        if (HttpContext.User.Claims.ToArray()[2].Value == "User")
+                        {
+
+
+                            TempData["UserID"] = HttpContext.User.Claims.ToArray()[0].Value;
+                            TempData["UserName"] = HttpContext.User.Claims.ToArray()[1].Value;
+                        }
+
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -60,6 +77,8 @@ namespace Voyager.Controllers
             {
                 return View();
             }
+
+
         }
         public async Task<IActionResult> LogOut()
         {

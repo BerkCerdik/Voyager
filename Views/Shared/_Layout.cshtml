@@ -55,6 +55,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <li class="mr-lg-4 mr-2"><a href="#tarrifs">Tariffs</a></li>
                     <li class="mr-lg-4 mr-2"><a href="#stats">Stats</a></li>
                     <li class="mr-lg-4 mr-2"><a href="#app">App Download</a></li>
+                    @if (TempData["UserName"] != null)
+                    {
+
+                        //düzenle
+                    <div>
+                        <a style="padding-right:10px" href="/PassengerLogin/Logout"><i class="fa fa-lock"></i>LogOut</a>
+                        <a href="/User/Edit/@TempData["UserID"]"> <i class="fa fa-user"></i>My Account</a>
+                        <a href="/Trip/@TempData["UserID"]"> <i class="fa fa-user"></i>My Trips</a>
+                    </div>
+                        <span class="d-none d-md-inline" style=" color:white " >Welcome @TempData["UserName"]</span>
+                    }
+                    else
+                    {
+                        <a href="/PassengerLogin/"><i class="fa fa-lock"></i>Login / Register</a>
+                    }
+
+
                 </ul>
             </nav>
             <!-- //nav -->

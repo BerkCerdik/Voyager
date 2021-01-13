@@ -22,8 +22,11 @@ namespace Voyager.Models.Vm
         [Required(ErrorMessage = "Please fill required areas!")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Please fill required areas!")]
+        [Compare("Password", ErrorMessage = "Passwords do not match!")]
+        [Display(Name = "Re-Password")]
+        public string Confirmpassword { get; set; }
 
 
-        
     }
 }

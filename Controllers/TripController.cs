@@ -18,9 +18,9 @@ namespace Voyager.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            List<TripVM> trips = _context.Trips.Include(x => x.Payment).Include(a => a.Passenger).Include(b => b.Driver).Select(q => new TripVM()
+            List<TripVM> trips = _context.Trips.Include(x => x.Payment).Include(a => a.Passenger).Include(b => b.Driver).Where(c => c.PassengerID == id).Select(q => new TripVM()
             {
                 ID = q.ID,
                 PassengerName = q.Passenger.Name,

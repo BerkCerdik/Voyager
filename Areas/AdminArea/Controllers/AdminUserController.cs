@@ -10,6 +10,8 @@ using Voyager.Models.Vm;
 
 namespace Voyager.Areas.AdminArea.Controllers
 {
+
+    [Area("AdminArea")]
     public class AdminUserController : BaseController
     {
         private readonly VoyagerContext _context;
@@ -49,10 +51,12 @@ namespace Voyager.Areas.AdminArea.Controllers
                 adminuser.Surname = model.Surname;
                 adminuser.Email = model.EMail;
                 adminuser.Password = model.Password;
-                adminuser.Roles = model.Roles;
+                //adminuser.Roles = model.Roles;
                 _context.AdminUsers.Add(adminuser);
                 _context.SaveChanges();
-                return RedirectToAction("Index", "AdminUser");
+                //return RedirectToAction("Index", "AdminUser");
+                return Redirect("/AdminArea/AdminUser/Index/");
+
             }
 
             return View();

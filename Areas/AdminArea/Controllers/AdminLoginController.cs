@@ -39,6 +39,9 @@ namespace Voyager.Areas.AdminArea.Controllers
                     var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, model.EMail),
+                    new Claim(ClaimTypes.Name, adminuser.Name),
+                    new Claim(ClaimTypes.UserData , "Admin")
+
                     //new Claim(ClaimTypes.Role,model.Roles)
                 };
                     var userIdentity = new ClaimsIdentity(claims, "login");
@@ -47,6 +50,18 @@ namespace Voyager.Areas.AdminArea.Controllers
 
                     adminuser.LastLoginDate = DateTime.Now;
                     _context.SaveChanges();
+
+                    if (HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        if (HttpContext.User.Claims.ToArray()[2].Value == "Admin")
+                        {
+
+
+                            TempData["UserID"] = HttpContext.User.Claims.ToArray()[0].Value;
+                            TempData["UserName"] = HttpContext.User.Claims.ToArray()[1].Value;
+                        }
+
+                    }
 
                     return RedirectToAction("Home", "AdminArea");
                 }
